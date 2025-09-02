@@ -1,10 +1,9 @@
 // lib/presentation/screens/profile/profile_screen.dart
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:team_manager_app/core/routing/app_router.dart';
 import 'package:team_manager_app/data/models/match.dart';
-import 'package:team_manager_app/presentation/screens/notifications/notifications_screen.dart';
-import 'package:team_manager_app/presentation/screens/players/player_detail_screen.dart';
-import 'package:team_manager_app/presentation/screens/auth/login_screen.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/player_provider.dart';
 import '../../providers/match_provider.dart';
@@ -15,6 +14,7 @@ import '../../../data/models/player.dart';
 import '../../../data/models/user.dart';
 import 'dart:math';
 
+@RoutePage()
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
@@ -580,11 +580,11 @@ Widget _buildPlayerCareerStats(
                       Icons.assistant),
                   _buildStatCard(
                       'Titularisations', '${matchStats['starting']}', context, Icons.star),
-                  _buildStatCard('Cartons jaunes',
+                  _buildStatCard('Cartons J',
                       '${playerStats['yellowCards']}', context, Icons.warning,
                       color: AppColors.warning),
                   _buildStatCard(
-                      'Cartons rouges', '${playerStats['redCards']}', context, Icons.block,
+                      'Cartons R', '${playerStats['redCards']}', context, Icons.block,
                       color: AppColors.error),
                 ],
               );
@@ -666,12 +666,7 @@ Widget _buildPlayerCareerStats(
             'Notifications',
             Icons.notifications_active,
             Colors.blue,
-            () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const NotificationsScreen(),
-              ),
-            ),
+            () => context.router.push(const NotificationsRoute())
           ),
           _buildDivider(),
           _buildOptionTile(
@@ -1218,10 +1213,8 @@ Widget _buildStatCard(String title, String value, BuildContext context, IconData
             onPressed: () {
               Navigator.pop(context);
               authProvider.logout();
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const LoginScreen()),
-              );
+              context.router.push(const LoginRoute());
+
             },
             style: TextButton.styleFrom(foregroundColor: AppColors.error),
             child: const Text('Se déconnecter'),

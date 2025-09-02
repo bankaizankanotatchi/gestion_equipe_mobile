@@ -1,10 +1,9 @@
 // lib/presentation/screens/messages/chat_list_screen.dart
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:team_manager_app/core/routing/app_router.dart';
 import 'package:team_manager_app/data/models/message.dart';
-import 'package:team_manager_app/presentation/screens/messages/group_chat_screen.dart';
-import 'package:team_manager_app/presentation/screens/messages/private_chat_screen.dart';
-import 'package:team_manager_app/presentation/screens/messages/new_chat_screen.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/message_provider.dart';
 import '../../providers/player_provider.dart';
@@ -12,6 +11,7 @@ import '../../../core/constants/colors.dart';
 import '../../../core/constants/text_styles.dart';
 import '../../../core/constants/app_constants.dart';
 
+@RoutePage()
 class ChatListScreen extends StatefulWidget {
   const ChatListScreen({super.key});
 
@@ -446,12 +446,7 @@ class _ChatListScreenState extends State<ChatListScreen> {
   }
 
   void _openGroupChat(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const GroupChatScreen(),
-      ),
-    );
+    context.router.push(const GroupChatRoute());
   }
 
   void _openPrivateChat(BuildContext context, Message message, String currentUserId) {
@@ -460,22 +455,12 @@ class _ChatListScreenState extends State<ChatListScreen> {
         : message.senderId;
     
     if (otherUserId != null) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => PrivateChatScreen(userId: otherUserId),
-        ),
-      );
+     context.router.push(PrivateChatRoute(userId: otherUserId));
     }
   }
 
   void _startNewChat(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const NewChatScreen(),
-      ),
-    );
+   context.router.push(const NewChatRoute());
   }
 }
 

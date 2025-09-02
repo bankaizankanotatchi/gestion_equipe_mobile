@@ -1,16 +1,16 @@
 // lib/presentation/screens/notifications/notifications_screen.dart
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:team_manager_app/core/routing/app_router.dart';
 import 'package:team_manager_app/presentation/providers/notification_provider.dart';
 import 'package:team_manager_app/presentation/providers/auth_provider.dart';
 import 'package:team_manager_app/core/constants/colors.dart';
 import 'package:team_manager_app/core/constants/text_styles.dart';
 import 'package:team_manager_app/core/constants/app_constants.dart';
 import 'package:team_manager_app/data/models/notification.dart' as notif;
-import 'package:team_manager_app/presentation/screens/matches/match_detail_screen.dart';
-import 'package:team_manager_app/presentation/screens/messages/group_chat_screen.dart';
-import 'package:team_manager_app/presentation/screens/players/player_detail_screen.dart';
 
+@RoutePage()
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
 
@@ -613,36 +613,19 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       case notif.NotificationType.match:
         if (notification.data != null && notification.data!['matchId'] != null) {
           // TODO: Naviguer vers les détails du match
-          Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MatchDetailScreen(matchId: notification.data!['matchId']),
-          ),
-        );
+          context.router.push(MatchDetailRoute(matchId: notification.data!['matchId']));
         }
         break;
       case notif.NotificationType.player:
         if (notification.data != null && notification.data!['playerId'] != null) {
           // TODO: Naviguer vers les détails du joueur
-          // Navigator.of(context).pushNamed('/player-details', arguments: notification.data!['playerId']);
-              Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => PlayerDetailScreen(playerId: notification.data!['playerId']),
-              ),
-            );
+          context.router.push(PlayerDetailRoute(playerId: notification.data!['playerId']));
         }
         break;
       case notif.NotificationType.message:
         if (notification.data != null && notification.data!['senderId'] != null) {
           // TODO: Naviguer vers les messages
-          // Navigator.of(context).pushNamed('/messages', arguments: notification.data!['senderId']);
-           Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const GroupChatScreen(),
-            ),
-          );
+          context.router.push(const GroupChatRoute());
         }
         break;
       case notif.NotificationType.team:

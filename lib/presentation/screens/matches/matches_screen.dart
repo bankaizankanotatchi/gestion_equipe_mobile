@@ -1,13 +1,15 @@
 // lib/presentation/screens/matches/matches_screen.dart
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:team_manager_app/presentation/screens/matches/match_detail_screen.dart';
+import 'package:team_manager_app/core/routing/app_router.dart';
 import '../../providers/match_provider.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/text_styles.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../data/models/match.dart';
 
+@RoutePage()
 class MatchesScreen extends StatefulWidget {
   const MatchesScreen({super.key});
 
@@ -123,12 +125,7 @@ class _MatchesScreenState extends State<MatchesScreen>
       ),
       child: InkWell(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MatchDetailScreen(matchId: match.id),
-            ),
-          );
+          context.router.push(MatchDetailRoute(matchId: match.id));
         },
         child: Padding(
           padding: const EdgeInsets.all(AppConstants.paddingMedium),
@@ -269,12 +266,7 @@ class _MatchesScreenState extends State<MatchesScreen>
       ),
       child: InkWell(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => MatchDetailScreen(matchId: match.id),
-            ),
-          );
+          context.router.push(MatchDetailRoute(matchId: match.id));
         },
         child: Padding(
           padding: const EdgeInsets.all(AppConstants.paddingMedium),

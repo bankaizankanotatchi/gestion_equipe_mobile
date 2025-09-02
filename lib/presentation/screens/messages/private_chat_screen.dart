@@ -1,4 +1,5 @@
 // lib/presentation/screens/messages/private_chat_screen.dart
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +12,7 @@ import 'package:team_manager_app/core/constants/app_constants.dart';
 import 'package:team_manager_app/data/models/message.dart';
 import 'package:team_manager_app/data/models/user.dart';
 
+@RoutePage()
 class PrivateChatScreen extends StatefulWidget {
   final String userId;
   

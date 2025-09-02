@@ -1,11 +1,15 @@
 // lib/presentation/screens/auth/login_screen.dart
+import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:team_manager_app/core/routing/app_router.dart';
 import '../../providers/auth_provider.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/text_styles.dart';
 import '../../../core/constants/app_constants.dart';
 
+@RoutePage()
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -76,11 +80,16 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
       _passwordController.text,
     );
 
-    if (!success) {
-      setState(() {
-        _errorMessage = 'Email ou mot de passe incorrect';
-      });
+  if (!success) {
+    setState(() {
+      _errorMessage = 'Email ou mot de passe incorrect';
+    });
+  } else {
+    // ✅ Redirection vers HomeRoute après succès
+    if (mounted) {
+      context.router.replace(const HomeRoute());
     }
+  }
   }
 
   @override
@@ -203,9 +212,9 @@ Widget _buildLogo() {
   Widget _buildEmailField() {
     return TextFormField(
       controller: _emailController,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: 'Email',
-        prefixIcon: const Icon(Icons.email_outlined),
+        prefixIcon: Icon(Icons.email_outlined),
         hintText: 'Entrez votre email',
       ),
       keyboardType: TextInputType.emailAddress,
@@ -213,9 +222,6 @@ Widget _buildLogo() {
         if (value == null || value.isEmpty) {
           return 'L\'email est requis';
         }
-        // if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}).hasMatch(value)){
-        //   return 'Format d\'email invalide';
-        // }
         return null;
       },
     );

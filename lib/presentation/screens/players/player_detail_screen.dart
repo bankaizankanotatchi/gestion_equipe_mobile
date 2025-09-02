@@ -1,9 +1,10 @@
 // lib/presentation/screens/players/player_detail_screen.dart
 import 'dart:math';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:team_manager_app/presentation/screens/players/add_edit_player_screen.dart';
+import 'package:team_manager_app/core/routing/app_router.dart';
 import '../../providers/player_provider.dart';
 import '../../providers/auth_provider.dart';
 import '../../../core/constants/colors.dart';
@@ -13,6 +14,7 @@ import '../../../data/models/player.dart';
 import '../../../data/database/mock_database.dart';
 import '../../../data/models/match.dart';
 
+@RoutePage()
 class PlayerDetailScreen extends StatelessWidget {
   final String playerId;
 
@@ -128,13 +130,7 @@ class PlayerDetailScreen extends StatelessWidget {
                                   value: 'edit',
                                   child: InkWell(
                                     onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              AddEditPlayerScreen(playerId: playerId),
-                                        ),
-                                      );
+                                      context.router.push(AddEditPlayerRoute(playerId: playerId));
                                     },
                                     child: const Text('Modifier'),
                                   ),

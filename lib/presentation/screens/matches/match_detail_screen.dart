@@ -1,9 +1,10 @@
 // lib/presentation/screens/matches/match_detail_screen.dart
 import 'dart:math';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:team_manager_app/presentation/screens/matches/add_match_screen.dart';
+import 'package:team_manager_app/core/routing/app_router.dart';
 import '../../providers/match_provider.dart';
 import '../../providers/player_provider.dart';
 import '../../providers/auth_provider.dart';
@@ -13,6 +14,7 @@ import '../../../core/constants/app_constants.dart';
 import '../../../data/models/match.dart';
 import '../../../data/models/player.dart';
 
+@RoutePage()
 class MatchDetailScreen extends StatelessWidget {
   final String matchId;
 
@@ -1065,12 +1067,7 @@ String _getPositionAbbreviation(Position position) {
   void _handleMenuAction(BuildContext context, String action) {
     switch (action) {
       case 'edit':
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => AddMatchScreen(matchId: matchId),
-          ),
-        );
+        context.router.push(AddMatchRoute(matchId: matchId));
         break;
       case 'delete':
         _showDeleteDialog(context);

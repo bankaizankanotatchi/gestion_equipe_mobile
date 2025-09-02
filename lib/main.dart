@@ -18,7 +18,7 @@ void main() {
         ChangeNotifierProvider(create: (_) => MessageProvider()),
         ChangeNotifierProvider(create: (_) => NotificationProvider()),
       ],
-      child: const TeamManagerApp(),
+      child: TeamManagerApp(),
     ),
   );
 }

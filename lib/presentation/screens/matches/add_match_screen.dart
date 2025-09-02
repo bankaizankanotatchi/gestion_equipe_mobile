@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
@@ -9,6 +10,7 @@ import 'package:team_manager_app/data/models/player.dart';
 
 enum MatchType { friendly, championship, cup, tournament }
 
+@RoutePage()
 class AddMatchScreen extends StatefulWidget {
   final String? matchId;
   const AddMatchScreen({super.key, this.matchId});

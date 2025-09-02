@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // Couleurs principales du thème : Blanc, Bleu, Jaune, Noir
-  static const Color primary = Color(0xFF1E3A8A);        // Bleu principal
+  static const Color primary = Color(0xFF023059);        // Bleu principal
   static const Color primaryLight = Color(0xFF3B82F6);    // Bleu clair
   static const Color primaryDark = Color(0xFF1E40AF);     // Bleu foncé
   

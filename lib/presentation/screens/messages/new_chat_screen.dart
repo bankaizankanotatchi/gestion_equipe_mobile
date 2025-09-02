@@ -1,15 +1,16 @@
 // lib/presentation/screens/messages/new_chat_screen.dart
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:team_manager_app/data/models/player.dart';
 import 'package:team_manager_app/data/models/user.dart';
-import 'package:team_manager_app/presentation/screens/messages/private_chat_screen.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/player_provider.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/text_styles.dart';
 import '../../../core/constants/app_constants.dart';
 
+@RoutePage()
 class NewChatScreen extends StatefulWidget {
   const NewChatScreen({super.key});
 

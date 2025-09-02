@@ -1,5 +1,6 @@
 
 // lib/presentation/screens/players/add_edit_player_screen.dart
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:team_manager_app/data/models/statistics.dart';
@@ -9,6 +10,7 @@ import '../../../core/constants/text_styles.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../data/models/player.dart';
 
+@RoutePage()
 class AddEditPlayerScreen extends StatefulWidget {
   final String? playerId;
 

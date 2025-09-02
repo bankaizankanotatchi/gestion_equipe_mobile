@@ -1,23 +1,21 @@
 // lib/presentation/screens/home/home_screen.dart
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:team_manager_app/core/routing/app_router.dart';
 import 'package:team_manager_app/presentation/providers/notification_provider.dart';
-import 'package:team_manager_app/presentation/screens/matches/add_match_screen.dart';
-import 'package:team_manager_app/presentation/screens/matches/match_detail_screen.dart';
-import 'package:team_manager_app/presentation/screens/notifications/notifications_screen.dart';
-import 'package:team_manager_app/presentation/screens/players/add_edit_player_screen.dart';
+import 'package:team_manager_app/presentation/screens/matches/matches_screen.dart';
+import 'package:team_manager_app/presentation/screens/messages/chat_list_screen.dart';
+import 'package:team_manager_app/presentation/screens/players/players_list_screen.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/player_provider.dart';
 import '../../providers/match_provider.dart';
-import '../players/players_list_screen.dart';
-import '../matches/matches_screen.dart';
-import '../messages/chat_list_screen.dart';
-import '../statistics/statistics_screen.dart';
 import '../profile/profile_screen.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/text_styles.dart';
 import '../../../core/constants/app_constants.dart';
 
+@RoutePage()
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -173,29 +171,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   void _onFabPressed() {
     switch (_currentIndex) {
       case 1:
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => AddEditPlayerScreen(playerId: null),
-          ),
-        );
+        context.router.push(AddEditPlayerRoute(playerId: null));
         break;
         
       case 2:
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => AddMatchScreen(matchId: null),
-          ),
-        );
+        context.router.push(AddMatchRoute(matchId: null));
         break;
       default:
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => AddMatchScreen(matchId: null),
-          ),
-        );
+      context.router.push(AddMatchRoute(matchId: null));
         break;
     }
   }
@@ -257,12 +240,7 @@ PreferredSizeWidget _buildAppBar(BuildContext context) {
               IconButton(
                 icon: const Icon(Icons.notifications_outlined, size: 35),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const NotificationsScreen(),
-                    ),
-                  );
+                  context.router.push(const NotificationsRoute());
                 },
               ),
               if (unreadCount > 0)
@@ -410,12 +388,7 @@ PreferredSizeWidget _buildAppBar(BuildContext context) {
               TextButton(
                 onPressed: () {
                   // Navigation vers l'écran des statistiques complètes
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const StatisticsScreen(),
-                    ),
-                  );
+                  context.router.push(const StatisticsRoute());
                 },
                 child: Text(
                   'Voir plus',
@@ -545,12 +518,7 @@ PreferredSizeWidget _buildAppBar(BuildContext context) {
                 TextButton(
                   onPressed: () {
                     // Naviguer vers MatchesScreen directement
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const MatchesScreen(),
-                      ),
-                    );
+                    context.router.push(const MatchesRoute());
                   },
                   child: Text(
                     'Voir tout',
@@ -577,11 +545,7 @@ PreferredSizeWidget _buildAppBar(BuildContext context) {
       margin: const EdgeInsets.only(bottom: AppConstants.paddingSmall),
       child: InkWell(
         onTap: () {
-        Navigator.push(context,
-          MaterialPageRoute(
-            builder: (context) => MatchDetailScreen(matchId: match.id),
-          ),
-        );
+        context.router.push(MatchDetailRoute(matchId: match.id));
       },
         child: Container(
           margin: const EdgeInsets.only(bottom: AppConstants.paddingSmall),
