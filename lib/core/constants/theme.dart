@@ -40,14 +40,14 @@ class AppTheme {
     ),
     
     // Cards
-    cardTheme: CardTheme(
-      color: AppColors.surface,
-      elevation: AppConstants.elevationSmall,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppConstants.borderRadius),
-      ),
-      margin: const EdgeInsets.all(AppConstants.marginSmall),
-    ),
+    // cardTheme: CardTheme(
+    //   color: AppColors.surface,
+    //   elevation: AppConstants.elevationSmall,
+    //   shape: RoundedRectangleBorder(
+    //     borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+    //   ),
+    //   margin: const EdgeInsets.all(AppConstants.marginSmall),
+    // ),
     
     // Buttons
     elevatedButtonTheme: ElevatedButtonThemeData(
