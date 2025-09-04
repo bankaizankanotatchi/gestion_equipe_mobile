@@ -26,43 +26,6 @@ class PlayerDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: const Text('Détails du joueur'),
-      //   backgroundColor: AppColors.surface,
-      //   elevation: 0,
-      //   actions: [
-      //     Consumer<AuthProvider>(
-      //       builder: (context, authProvider, child) {
-      //         if (authProvider.isCoach) {
-      //           return PopupMenuButton(
-      //             itemBuilder: (context) => [
-      //               PopupMenuItem(
-      //                 value: 'edit',
-      //                 child: InkWell(
-      //                   onTap: () {
-      //                     Navigator.push(
-      //                       context,
-      //                       MaterialPageRoute(
-      //                         builder: (context) => AddEditPlayerScreen(playerId: playerId),
-      //                       ),
-      //                     );
-      //                   },
-      //                   child: const Text('Modifier'),
-      //                 ),
-      //               ),
-      //               const PopupMenuItem(
-      //                 value: 'delete',
-      //                 child: Text('Supprimer'),
-      //               ),
-      //             ],
-      //             onSelected: (value) => _handleMenuAction(context, value),
-      //           );
-      //         }
-      //         return const SizedBox.shrink();
-      //       },
-      //     ),
-      //   ],
-      // ),
       body: Consumer<PlayerProvider>(
         builder: (context, playerProvider, child) {
           final player = playerProvider.getPlayerById(playerId);

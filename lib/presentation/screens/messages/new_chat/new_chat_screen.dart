@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:team_manager_app/data/models/player.dart';
 import 'package:team_manager_app/data/models/user.dart';
-import '../../providers/auth_provider.dart';
-import '../../providers/player_provider.dart';
-import '../../../core/constants/colors.dart';
-import '../../../core/constants/text_styles.dart';
-import '../../../core/constants/app_constants.dart';
+import '../../../providers/auth_provider.dart';
+import '../../../providers/player_provider.dart';
+import '../../../../core/constants/colors.dart';
+import '../../../../core/constants/text_styles.dart';
+import '../../../../core/constants/app_constants.dart';
 
 @RoutePage()
 class NewChatScreen extends StatefulWidget {
@@ -451,12 +451,6 @@ class _NewChatScreenState extends State<NewChatScreen> {
   }
 
   void _startChatWithUser(User user) {
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => PrivateChatScreen(userId: user.id),
-    //   ),
-    // );
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text("Nouvelle discussion avec ${user.name}"),
