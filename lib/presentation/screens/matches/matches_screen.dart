@@ -1,12 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:team_manager_app/core/routing/app_router.dart';
-import '../../providers/match_provider.dart';
 import '../../../core/constants/colors.dart';
-import '../../../core/constants/text_styles.dart';
-import '../../../core/constants/app_constants.dart';
-import '../../../data/models/match.dart';
 
 // Import des widgets séparés
 import 'components/completed_matches_tab.dart';

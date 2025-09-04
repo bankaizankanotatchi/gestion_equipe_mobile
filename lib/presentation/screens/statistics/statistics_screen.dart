@@ -1,11 +1,8 @@
 // lib/presentation/screens/statistics/statistics_screen.dart
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:team_manager_app/presentation/screens/statistics/components/TeamStats.dart';
 import 'package:team_manager_app/presentation/screens/statistics/components/TopAssists.dart';
-import '../../providers/match_provider.dart';
-import '../../providers/player_provider.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/text_styles.dart';
 import '../../../core/constants/app_constants.dart';

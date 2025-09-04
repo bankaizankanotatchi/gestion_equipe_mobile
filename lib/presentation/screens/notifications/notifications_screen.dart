@@ -1,11 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:team_manager_app/core/routing/app_router.dart';
 import 'package:team_manager_app/presentation/providers/notification_provider.dart';
 import 'package:team_manager_app/presentation/providers/auth_provider.dart';
-import 'package:team_manager_app/core/constants/colors.dart';
-import 'package:team_manager_app/core/constants/text_styles.dart';
 import 'package:team_manager_app/core/constants/app_constants.dart';
 import 'package:team_manager_app/data/models/notification.dart' as notif;
 

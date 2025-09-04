@@ -1,14 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:team_manager_app/core/routing/app_router.dart';
-import '../../../data/models/statistics.dart' hide PlayerStats;
 import '../../providers/match_provider.dart';
 import '../../providers/player_provider.dart';
-import '../../providers/auth_provider.dart';
-import '../../../core/constants/colors.dart';
-import '../../../core/constants/text_styles.dart';
-import '../../../core/constants/app_constants.dart';
 import '../../../data/models/match.dart' hide MatchResult;
 import 'components_matchdetails/match_detail_app_bar.dart';
 import 'components_matchdetails/match_header.dart';
