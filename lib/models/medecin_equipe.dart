@@ -1,0 +1,48 @@
+import 'package:hive/hive.dart';
+import 'package:team_manager_app/models/enums/role_staff.dart';
+import 'staff.dart';
+
+part 'medecin_equipe.g.dart';
+
+@HiveType(typeId: 5)
+class MedecinEquipe extends Staff {
+  @HiveField(14)
+  String numeroOrdre;
+
+  @HiveField(15)
+  List<String> specialitesMedicales;
+
+  MedecinEquipe({
+    required int id,
+    required String nom,
+    required String prenom,
+    required DateTime dateNaissance,
+    required String telephone,
+    required String email,
+    required String adresse,
+    required String nationalite,
+    required String numeroPasseport,
+    required String numeroIdentite,
+    required RoleStaff role,
+    required String specialite,
+    required String certification,
+    required int experience,
+    required this.numeroOrdre,
+    required this.specialitesMedicales,
+  }) : super(
+          id: id,
+          nom: nom,
+          prenom: prenom,
+          dateNaissance: dateNaissance,
+          telephone: telephone,
+          email: email,
+          adresse: adresse,
+          nationalite: nationalite,
+          numeroPasseport: numeroPasseport,
+          numeroIdentite: numeroIdentite,
+          role: role,
+          specialite: specialite,
+          certification: certification,
+          experience: experience,
+        );
+}
